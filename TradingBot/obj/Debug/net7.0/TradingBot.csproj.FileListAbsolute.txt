@@ -1,0 +1,5 @@
+G:\Projects\Trading-Bot\TradingBot\obj\Debug\net7.0\TradingBot.csproj.AssemblyReference.cache
+G:\Projects\Trading-Bot\TradingBot\obj\Debug\net7.0\TradingBot.GeneratedMSBuildEditorConfig.editorconfig
+G:\Projects\Trading-Bot\TradingBot\obj\Debug\net7.0\TradingBot.AssemblyInfoInputs.cache
+G:\Projects\Trading-Bot\TradingBot\obj\Debug\net7.0\TradingBot.AssemblyInfo.cs
+G:\Projects\Trading-Bot\TradingBot\obj\Debug\net7.0\TradingBot.csproj.CoreCompileInputs.cache
