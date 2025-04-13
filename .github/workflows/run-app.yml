@@ -1,0 +1,26 @@
+name: Run .NET Console App Once
+
+on:
+  workflow_dispatch:  # Allows you to trigger it manually
+
+jobs:
+  build-and-run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '8.0.x'  # Or your actual version
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --configuration Release
+
+    - name: Run the console app
+      run: dotnet run --project ./TradingBot/TradingBot.csproj
