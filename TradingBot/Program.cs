@@ -181,6 +181,9 @@ namespace TradingBot
                 try
                 {
                     var coins = await _mongoDbService.GetAllCoinDetails();
+                    var openTrades = await _mongoDbService.GetOpenTrades();
+                    var openTradesCoins = openTrades.Select(x => x.Symbol).ToList();
+                    openTrades = openTrades.Where(x => !openTradesCoins.Contains(x.Symbol)).ToList();
 
                     var lookbackTime = DateTime.UtcNow.AddMinutes(-(_tradingSettings.CandleAnalysis.LookbackMinutes + 5));
 
