@@ -83,7 +83,7 @@ namespace TradingBot.Services
 
         public async Task CleanupOldPriceLogs()
         {
-            var threeDaysAgo = DateTime.UtcNow.AddDays(-3);
+            var threeDaysAgo = DateTime.UtcNow.AddDays(-1);
             var filter = Builders<PriceLog>.Filter.Lt(x => x.Timestamp, threeDaysAgo);
             await _priceLogs.DeleteManyAsync(filter);
         }

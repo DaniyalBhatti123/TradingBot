@@ -146,7 +146,7 @@ namespace TradingBot
                 }
                 finally
                 {
-                    await Task.Delay(60 * 1000, context.CancellationToken);
+                    await Task.Delay(10 * 1000, context.CancellationToken);
                 }
             }
         }
@@ -329,7 +329,7 @@ namespace TradingBot
                 }
                 finally
                 {
-                    await Task.Delay(10 * 1000, context.CancellationToken);
+                    await Task.Delay(60 * 1000, context.CancellationToken);
                 }
             }
         }
