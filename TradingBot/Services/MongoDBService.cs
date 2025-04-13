@@ -64,7 +64,6 @@ namespace TradingBot.Services
         {
             var priceLogs = await _priceLogs
                     .Find(log => log.Timestamp >= lookbackTime)
-                    .SortBy(log => log.Timestamp)
                     .ToListAsync();
 
             return priceLogs;
