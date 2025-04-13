@@ -1979,11 +1979,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Trading-Bot\\TradingBot\\TradingBot.csproj",
+      "projectUniqueName": "D:\\Projects\\TradingBot\\TradingBot\\TradingBot.csproj",
       "projectName": "TradingBot",
-      "projectPath": "D:\\Projects\\Trading-Bot\\TradingBot\\TradingBot.csproj",
+      "projectPath": "D:\\Projects\\TradingBot\\TradingBot\\TradingBot.csproj",
       "packagesPath": "C:\\Users\\hb291\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Trading-Bot\\TradingBot\\obj\\",
+      "outputPath": "D:\\Projects\\TradingBot\\TradingBot\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

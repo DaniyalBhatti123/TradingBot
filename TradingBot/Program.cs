@@ -90,6 +90,7 @@ namespace TradingBot
             await scheduler.ScheduleJob(priceLogJob, priceLogTrigger);
 
             Console.WriteLine("Trading Bot is running. Press Ctrl+C to exit.");
+            while (true) { Thread.Sleep(1 * 60 * 60 * 1000); }
             Console.ReadLine();
         }
     }

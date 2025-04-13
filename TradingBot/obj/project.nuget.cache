@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "iWr6eIrjYJw=",
+  "dgSpecHash": "iNOMWSjbuRY=",
   "success": true,
-  "projectFilePath": "D:\\Projects\\Trading-Bot\\TradingBot\\TradingBot.csproj",
+  "projectFilePath": "D:\\Projects\\TradingBot\\TradingBot\\TradingBot.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\hb291\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\hb291\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
