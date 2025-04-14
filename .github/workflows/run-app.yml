@@ -2,7 +2,7 @@ name: Run .NET Console App Once
 
 on:
   schedule:
-    - cron: '0 * * * *'
+    - cron: '12 * * * *'
   workflow_dispatch:  # Allows you to trigger it manually
 
 jobs:
