@@ -36,18 +36,26 @@ namespace TradingBot.Services
             // Check existing trades for take profit or stop loss
             foreach (var trade in openTrades)
             {
-                var currentPrice = await _kucoinService.GetCurrentPrice(trade.Symbol);
-                var profitPercentage = ((currentPrice - trade.EntryPrice) / trade.EntryPrice) * 100;
-
-                if (profitPercentage >= _settings.TakeProfitPercentage)
+                if (trade.CloseForcefully)
                 {
-                    // Take profit
+                    var currentPrice = await _kucoinService.GetCurrentPrice(trade.Symbol);
                     await CloseTrade(trade, currentPrice, TradeStatus.Closed);
                 }
-                else if (profitPercentage <= -_settings.StopLossPercentage)
+                else
                 {
-                    // Stop loss
-                    await CloseTrade(trade, currentPrice, TradeStatus.StopLoss);
+                    var currentPrice = await _kucoinService.GetCurrentPrice(trade.Symbol);
+                    var profitPercentage = ((currentPrice - trade.EntryPrice) / trade.EntryPrice) * 100;
+
+                    if (profitPercentage >= _settings.TakeProfitPercentage)
+                    {
+                        // Take profit
+                        await CloseTrade(trade, currentPrice, TradeStatus.Closed);
+                    }
+                    else if (profitPercentage <= -_settings.StopLossPercentage)
+                    {
+                        // Stop loss
+                        await CloseTrade(trade, currentPrice, TradeStatus.StopLoss);
+                    }
                 }
             }
         }
@@ -70,7 +78,8 @@ namespace TradingBot.Services
                 Quantity = quantity,
                 EntryTime = DateTime.UtcNow,
                 Type = TradeType.Buy,
-                Status = TradeStatus.Open
+                Status = TradeStatus.Open,
+                CloseForcefully = false
             };
 
             await _mongoDbService.InsertTrade(trade);

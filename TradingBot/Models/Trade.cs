@@ -19,6 +19,7 @@ namespace TradingBot.Models
         public DateTime? ExitTime { get; set; }
         public TradeType Type { get; set; }
         public TradeStatus Status { get; set; }
+        public bool CloseForcefully { get; set; }
     }
 
     public enum TradeType

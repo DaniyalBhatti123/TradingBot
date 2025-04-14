@@ -32,17 +32,17 @@ namespace TradingBot
             var scheduler = await schedulerFactory.GetScheduler();
             await scheduler.Start();
 
-            // Schedule price update job (every minute)
-            //var priceUpdateJob = JobBuilder.Create<PriceUpdateJob>()
-            //    .WithIdentity("priceUpdateJob")
-            //    .Build();
+            //Schedule price update job(every minute)
+            var priceUpdateJob = JobBuilder.Create<PriceUpdateJob>()
+                .WithIdentity("priceUpdateJob")
+                .Build();
 
-            //var priceUpdateTrigger = TriggerBuilder.Create()
-            //    .WithIdentity("priceUpdateTrigger")
-            //    .WithSimpleSchedule()
-            //    .Build();
+            var priceUpdateTrigger = TriggerBuilder.Create()
+                .WithIdentity("priceUpdateTrigger")
+                .WithSimpleSchedule()
+                .Build();
 
-            //await scheduler.ScheduleJob(priceUpdateJob, priceUpdateTrigger);
+            await scheduler.ScheduleJob(priceUpdateJob, priceUpdateTrigger);
 
             var tradingAnalysisJob = JobBuilder.Create<TradingAnalysisJob>()
                 .WithIdentity("tradingAnalysisJob")
@@ -55,39 +55,39 @@ namespace TradingBot
 
             await scheduler.ScheduleJob(tradingAnalysisJob, tradingAnalysisTrigger);
 
-            //var analysingProfitToCloseTradesJob = JobBuilder.Create<AnalysingProfitToCloseTrades>()
-            //    .WithIdentity("analysingProfitToCloseTradesJob")
-            //    .Build();
+            var analysingProfitToCloseTradesJob = JobBuilder.Create<AnalysingProfitToCloseTrades>()
+                .WithIdentity("analysingProfitToCloseTradesJob")
+                .Build();
 
-            //var analysingProfitToCloseTradesTrigger = TriggerBuilder.Create()
-            //    .WithIdentity("analysingProfitToCloseTradesTrigger")
-            //    .WithSimpleSchedule()
-            //    .Build();
+            var analysingProfitToCloseTradesTrigger = TriggerBuilder.Create()
+                .WithIdentity("analysingProfitToCloseTradesTrigger")
+                .WithSimpleSchedule()
+                .Build();
 
-            //await scheduler.ScheduleJob(analysingProfitToCloseTradesJob, analysingProfitToCloseTradesTrigger);
+            await scheduler.ScheduleJob(analysingProfitToCloseTradesJob, analysingProfitToCloseTradesTrigger);
 
-            //var cleanupJob = JobBuilder.Create<CleanupJob>()
-            //    .WithIdentity("cleanupJob")
-            //    .Build();
+            var cleanupJob = JobBuilder.Create<CleanupJob>()
+                .WithIdentity("cleanupJob")
+                .Build();
 
-            //var cleanupTrigger = TriggerBuilder.Create()
-            //    .WithIdentity("cleanupTrigger")
-            //    .WithSimpleSchedule()
-            //    .Build();
+            var cleanupTrigger = TriggerBuilder.Create()
+                .WithIdentity("cleanupTrigger")
+                .WithSimpleSchedule()
+                .Build();
 
-            //await scheduler.ScheduleJob(cleanupJob, cleanupTrigger);
+            await scheduler.ScheduleJob(cleanupJob, cleanupTrigger);
 
-            //// Schedule price log job (every 10 seconds)
-            //var priceLogJob = JobBuilder.Create<PriceLogJob>()
-            //    .WithIdentity("priceLogJob")
-            //    .Build();
+            // Schedule price log job (every 10 seconds)
+            var priceLogJob = JobBuilder.Create<PriceLogJob>()
+                .WithIdentity("priceLogJob")
+                .Build();
 
-            //var priceLogTrigger = TriggerBuilder.Create()
-            //    .WithIdentity("priceLogTrigger")
-            //    .WithSimpleSchedule()
-            //    .Build();
+            var priceLogTrigger = TriggerBuilder.Create()
+                .WithIdentity("priceLogTrigger")
+                .WithSimpleSchedule()
+                .Build();
 
-            //await scheduler.ScheduleJob(priceLogJob, priceLogTrigger);
+            await scheduler.ScheduleJob(priceLogJob, priceLogTrigger);
 
             Console.WriteLine("Trading Bot is running. Press Ctrl+C to exit.");
             while (true) { Thread.Sleep(1 * 60 * 60 * 1000); }
