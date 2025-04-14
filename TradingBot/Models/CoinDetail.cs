@@ -14,6 +14,7 @@ namespace TradingBot.Models
         public decimal FirstPrice { get; set; }
         public decimal CurrentPrice { get; set; }
         public decimal PriceChangePercentage { get; set; }
+        public DateTime CreatedAt { get; set; }
         public DateTime LastUpdated { get; set; }
         public bool IsActive { get; set; }
     }

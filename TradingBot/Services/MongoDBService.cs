@@ -55,6 +55,28 @@ namespace TradingBot.Services
             await _coinDetails.BulkWriteAsync(writeModels);
         }
 
+        public async Task BulkUpdateCoinDetail(List<CoinDetail> coinDetails)
+        {
+            var writeModels = new List<WriteModel<CoinDetail>>();
+
+            foreach (var doc in coinDetails)
+            {
+                var filter = Builders<CoinDetail>.Filter.Eq(x => x.Id, doc.Id);
+                var update = Builders<CoinDetail>.Update
+                    .Set(x => x.Name, doc.Name)
+                    .Set(x => x.Symbol, doc.Symbol)
+                    .Set(x => x.FirstPrice, doc.FirstPrice)
+                    .Set(x => x.CurrentPrice, doc.CurrentPrice)
+                    .Set(x => x.PriceChangePercentage, doc.PriceChangePercentage)
+                    .Set(x => x.LastUpdated, DateTime.UtcNow);
+
+                var updateOne = new UpdateOneModel<CoinDetail>(filter, update);
+                writeModels.Add(updateOne);
+            }
+
+            await _coinDetails.BulkWriteAsync(writeModels);
+        }
+
         public async Task<List<CoinDetail>> GetAllCoinDetails()
         {
             return await _coinDetails.Find(_ => true).ToListAsync();

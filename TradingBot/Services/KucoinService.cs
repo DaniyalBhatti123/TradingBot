@@ -30,6 +30,7 @@ namespace TradingBot.Services
                             CurrentPrice = ticker.LastPrice ?? 0m,
                             FirstPrice = ticker.LastPrice ?? 0m, // This will be updated if it's a new coin
                             PriceChangePercentage = ticker.ChangePercentage ?? 0m,
+                            CreatedAt = DateTime.UtcNow,
                             LastUpdated = DateTime.UtcNow,
                             IsActive = true
                         };

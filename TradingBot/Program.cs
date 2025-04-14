@@ -134,9 +134,16 @@ namespace TradingBot
                     {
                         foreach (var coin in coins)
                         {
-                            var coinDetail = await _mongoDbService.GetCoinDetail(coin);
-                            coin.Id = coinDetail.Id;
-                            await _mongoDbService.UpsertCoinDetail(coin);
+                            var coinDetail = coinDetails.FirstOrDefault(x => x.Symbol == coin.Symbol);
+                            coin.Id = coinDetail?.Id ?? null;
+                        }
+                        if(coins.Where(x => !string.IsNullOrEmpty(x.Id)).ToList().Count > 0)
+                        {
+                            await _mongoDbService.BulkUpdateCoinDetail(coins.Where(x => !string.IsNullOrEmpty(x.Id)).ToList());
+                        }
+                        if(coins.Where(x => string.IsNullOrEmpty(x.Id)).ToList().Count > 0)
+                        {
+                            await _mongoDbService.BulkInsertCoinDetail(coins.Where(x => string.IsNullOrEmpty(x.Id)).ToList());
                         }
                     }
                     else
